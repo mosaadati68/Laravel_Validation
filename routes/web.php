@@ -20,3 +20,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/validation1', 'ValidationController@index')->name('validation.create');
 Route::post('/validation1', 'ValidationController@store')->name('validation.store');
+Route::get('/ajax', 'AjaxController@index')->name('ajax.index');
+Route::post('/ajax', 'AjaxController@store')->name('ajax.store');

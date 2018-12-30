@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container" style="font-family: IRANSansWeb;">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
@@ -21,13 +21,13 @@
                                     {{ csrf_field() }}
                                     @foreach(range(0,4) as $x)
                                         <div class="form-group">
-                                            <label for="email-{{ $x }}" class="control-label">Email
+                                            <label for="email-{{ $x }}" class="control-label float-right">Email
                                                 #{{ $x }}</label>
                                             <input type="text" name="emails[]" id="email-{{ $x }}" class="form-control {{ $errors->has('emails.' . $x ) ? 'has-error' : '' }}"
                                                    value="{{ old('emails.' . $x ) }}">
 
                                             @if($errors->has('emails.' . $x ))
-                                                <span class="has-error-color" >
+                                                <span class="has-error-color mt-3 mb-3" >
                                                     {{ $errors->first('emails.' . $x ) }}
                                                 </span>
                                             @endif
