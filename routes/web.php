@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/validation1', 'ValidationController@index')->name('validation.create');
+Route::post('/validation1', 'ValidationController@store')->name('validation.store');

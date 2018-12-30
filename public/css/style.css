@@ -1,0 +1,16 @@
+body {
+    direction: rtl;
+}
+
+.has-error {
+    border: 1px solid darkred;
+}
+
+.no-error {
+    border: 1px solid darkgreen;
+}
+
+.has-error-color {
+    color: darkred;
+    float: right;
+}
