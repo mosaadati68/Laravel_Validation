@@ -5,80 +5,13 @@
         <div class="container" style="font-family:IRANSansWeb">
             <div class="row justify-content-center">
                 <div class="col-md-8">
-                    <div class="card">
-
-                        <div>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consequatur corporis
-                            deleniti
-                            dolores fugiat harum impedit inventore ipsam iusto laudantium maxime modi molestiae
-                            molestias
-                            mollitia nam, nihil, nisi nobis nulla odit officiis optio perspiciatis porro praesentium
-                            quae
-                            quas repellat rerum sequi similique sunt voluptas? Assumenda eligendi incidunt ipsum.
-                            Accusantium assumenda consequuntur error exercitationem id illo in laboriosam molestias
-                            quaerat
-                            sequi! Aut fugiat iure odit quos reprehenderit sequi veritatis? Assumenda autem cupiditate
-                            dolorum fugiat minus molestiae natus, nemo nostrum nulla obcaecati pariatur rem sapiente,
-                            sunt!
-                            Accusantium ad amet aut cum eligendi, eum, eveniet harum hic id impedit, minus modi
-                            molestias
-                            natus nostrum officiis qui quisquam quod quos recusandae sapiente soluta suscipit velit
-                            veniam
-                            voluptas voluptatibus? Cupiditate ea error esse, est et hic illum ipsum magni, molestias
-                            nihil
-                            nulla qui, quo sint tempora voluptate. Aliquam aperiam architecto autem consectetur
-                            consequatur,
-                            consequuntur cumque cupiditate dolor dolore ducimus eius eligendi ex facilis hic in incidunt
-                            ipsum itaque iure laudantium minima nesciunt nostrum nulla, odit praesentium quam quas
-                            quibusdam
-                            repellat repellendus reprehenderit rerum saepe veritatis voluptatem voluptatum. Aliquam
-                            architecto at cum, earum minima numquam omnis, quasi saepe sed tempora unde vero voluptatem.
-                            Corporis earum esse mollitia nemo pariatur reiciendis reprehenderit sit ullam. Aliquam amet
-                            architecto asperiores autem beatae consequatur corporis culpa cumque dignissimos fuga hic,
-                            laborum magnam nobis numquam optio perspiciatis porro possimus, quae sapiente sint, ut velit
-                            vero? Animi at dolorem, ducimus facere harum inventore iure libero, molestiae obcaecati
-                            provident quam reiciendis rem soluta sunt tenetur veritatis vitae. Aliquid animi culpa,
-                            cumque
-                            deleniti eum eveniet excepturi ipsa itaque labore, nihil quas repellat saepe sint vel vitae?
-                            Accusantium commodi consequuntur dignissimos dolorum eum excepturi in, iusto molestiae,
-                            nesciunt
-                            perspiciatis quo repellat velit vero! Cum eius est libero placeat ratione! A ab aliquid amet
-                            assumenda at cupiditate eligendi eos eveniet ipsa, laborum magnam minima natus
-                            necessitatibus
-                            nihil obcaecati optio placeat quas quasi repellendus rerum sapiente sequi sunt tempore
-                            veniam
-                            vero! Beatae, cupiditate error est iure modi placeat qui repellat. Aperiam aspernatur
-                            blanditiis
-                            dolore dolores ducimus enim fugiat in, molestias, nobis odit officiis optio placeat,
-                            possimus
-                            quas quos sapiente vel veritatis voluptatibus. A accusantium ad alias aperiam, beatae
-                            blanditiis
-                            dolorem, eligendi enim esse eum, fugiat fugit inventore ipsa laboriosam natus neque non
-                            officiis
-                            reiciendis repellat reprehenderit repudiandae ut voluptates? Asperiores aspernatur autem
-                            distinctio dolorem, enim impedit ipsa nemo, officia, perferendis porro quam quis?
-                            Consequuntur
-                            dolorem eius eum id nam nobis tenetur vitae! Ab aspernatur dignissimos eligendi fugiat
-                            inventore
-                            nihil possimus quibusdam quidem ratione, sapiente. Deleniti eos ex magnam temporibus totam.
-                            Accusamus commodi laboriosam repellat veniam veritatis? Aliquid consectetur debitis delectus
-                            error facilis fugiat omnis perferendis, possimus, quae quaerat quia quos sapiente sequi,
-                            velit
-                            veniam. Aut blanditiis consequatur debitis distinctio ducimus et facilis fugit illum iusto
-                            molestias necessitatibus officiis pariatur quidem quis quo rem tempora, velit! Aperiam
-                            blanditiis cupiditate distinctio ducimus et expedita facilis perspiciatis qui ratione, sequi
-                            sunt tempora voluptatibus. Architecto at ea ipsa minima nam neque nobis pariatur possimus
-                            quidem, vel? Doloremque doloribus ducimus eaque esse, fugit harum ipsam maiores mollitia
-                            nisi
-                            quae, vitae voluptate voluptatum.
-                        </div>
-
-                        <div class="card-header">{{ __('ثبت نام') }}</div>
+                    <div class="card" id="registerForm">
+                        <div class="card-header text-center">{{ __('ثبت نام') }}</div>
 
                         <div class="card-body">
 
                             @if(session('success_message'))
-                                <div class="alert alert-success">
+                                <div class="alert alert-success text-right">
                                     {{session('success_message')}}
                                 </div>
                             @endif
@@ -87,14 +20,14 @@
                                 <div class="alert alert-danger">
                                     <ul>
                                         @foreach($errors->all() as $error)
-                                            <li> {{ $error }}</li>
+                                            <li class="list-group text-right"> {{ $error }}</li>
                                         @endforeach
                                     </ul>
                                 </div>
                             @endif
 
                             <form method="POST" action="{{ route('ajax.store') }}" id="userForm"
-                                  aria-label="{{ __('Register') }}">
+                                  class="mb-4" aria-label="{{ __('Register') }}">
                                 @csrf
 
                                 <div class="form-group row">
@@ -104,10 +37,10 @@
                                     <div class="col-md-8">
                                         <input id="name" type="text"
                                                class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
-                                               name="name" value="{{ old('name') }}" required autofocus>
+                                               name="name" value="{{ old('name') }}" autofocus>
 
                                         @if ($errors->has('name'))
-                                            <span class="invalid-feedback" role="alert">
+                                            <span class="invalid-feedback text-right" role="alert">
                                                  <strong>{{ $errors->first('name') }}</strong>
                                             </span>
                                         @endif
@@ -121,10 +54,10 @@
                                     <div class="col-md-8">
                                         <input id="email" type="email"
                                                class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
-                                               name="email" value="{{ old('email') }}" required>
+                                               name="email" value="{{ old('email') }}">
 
                                         @if ($errors->has('email'))
-                                            <span class="invalid-feedback" role="alert">
+                                            <span class="invalid-feedback text-right" role="alert">
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
                                         @endif
@@ -138,10 +71,10 @@
                                     <div class="col-md-8">
                                         <input id="password" type="password"
                                                class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
-                                               name="password" required>
+                                               name="password">
 
                                         @if ($errors->has('password'))
-                                            <span class="invalid-feedback" role="alert">
+                                            <span class="invalid-feedback text-right" role="alert">
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>
                                         @endif
@@ -154,10 +87,9 @@
 
                                     <div class="col-md-8">
                                         <input id="password-confirm" type="password" class="form-control"
-                                               name="password_confirmation" required>
+                                               name="password_confirmation">
                                     </div>
                                 </div>
-
                                 <div class="form-group row mb-0">
                                     <div class="col-md-6 offset-md-4">
                                         <button type="submit" class="btn btn-primary">
@@ -166,10 +98,67 @@
                                     </div>
                                 </div>
                             </form>
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </main>
+@endsection
+@section('scripts')
+    <script>
+        (function () {
+            document.querySelector('#userForm').addEventListener('submit', function (e) {
+                e.preventDefault()
+
+                // let data = {
+                //     'name': document.querySelector('#name').value,
+                //     'email': document.querySelector('#email').value,
+                //     'password': document.querySelector('#password').value,
+                //     'password-confirm': document.querySelector('#password-confirm').value
+                // }
+                axios.post(this.action, {
+                    'name': document.querySelector('#name').value,
+                    'email': document.querySelector('#email').value,
+                    'password': document.querySelector('#password').value,
+                    'password_confirmation': document.querySelector('#password-confirm').value
+                }).then((response) => {
+                    {{--window.location.href = '{{ route('ajax.index') }}'--}}
+                    this.reset()
+                    this.insertAdjacentHTML('beforebegin', `<div class="alert alert-success text-right" id="success">ثبت نام شما با موفقیت انجام گردید. </br>ایمیلی جهت تایید و فعال نمودن حساب کاربری برای شما ارسال گردید</div>`)
+                    document.getElementById('registerForm').scrollIntoView();
+                    setTimeout(function() {
+                        $(".alert").slideUp(500, function(){
+                            $(this).remove();
+                        });
+                    }, 4000);
+                }).catch((error) => {
+                    const errors = error.response.data.errors
+                    const firstItem = Object.keys(errors)[0]
+                    const firstItemDOM = document.getElementById(firstItem)
+                    const firstErrorMessage = errors[firstItem][0]
+                    // console.log(errors);
+
+                    // scroll to the error message
+                    // firstItemDOM.scrollIntoView({behavior: 'smooth'});
+                    firstItemDOM.scrollIntoView()
+
+                    // remove all errors messages
+                    const errorMessages = document.querySelectorAll('.text-danger')
+                    errorMessages.forEach((element) => element.textContent = '')
+
+                    // show the error message
+                    firstItemDOM.insertAdjacentHTML('afterend', `<div class="text-danger text-right">${firstErrorMessage}</div>`)
+
+                    //remove all form controler with highlighted error text box
+                    const formControlers = document.querySelectorAll('.form-control')
+                    formControlers.forEach((element) => element.classList.remove('border', 'border-danger'))
+
+                    // hithlight the form control with the error
+                    firstItemDOM.classList.add('border', 'border-danger');
+                });
+            });
+        })();
+    </script>
 @endsection

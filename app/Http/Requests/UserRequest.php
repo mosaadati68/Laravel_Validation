@@ -25,8 +25,17 @@ class UserRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'email' => 'required|email',
-            'password' => 'required|confirm|min:6'
+            'email' => 'required|email|unique:users',
+            'password' => 'required|confirmed|min:6',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'لطفا نام کاربری خود را وارد نمایید.',
+            'email.required' => 'لطفا ایمیل خود را وارد نمایید.',
+            'passowrd.confirmed' => 'رمز عبور وارد شده مطابقت ندارد.',
         ];
     }
 }

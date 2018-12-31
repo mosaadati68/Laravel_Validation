@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRequest;
-use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Http\Request;
 
 class AjaxController extends Controller
 {
@@ -15,8 +15,12 @@ class AjaxController extends Controller
 
     public function store(UserRequest $request)
     {
-        return $this->validate($request);
-        User::create($request->all());
-        return back()->with('success_message', 'ثبت نام شما با موفقیت انجام گردید.');
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+        ]);
+//        session()->flash('success_message', 'ثبت نام شما با موفقیت انجام گردید.');
+        return response()->json(['success' => true]);
     }
 }
